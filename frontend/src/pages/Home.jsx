@@ -223,16 +223,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Info Section */}
-      <section className="py-16 px-4 lg:px-0 bg-base-100">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-sm text-base-content/70 mb-4">🚀 Frontend Stack</p>
-          <p className="font-semibold mb-2">React + Vite + Tailwind CSS + Daisy UI + React Router</p>
-          <p className="text-sm text-base-content/70">
-            ⚡ Backend Ready: Express + MongoDB (Native Driver)
-          </p>
-        </div>
-      </section>
     </div>
   )
 }

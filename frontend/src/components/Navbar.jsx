@@ -1,8 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useTheme } from '../contexts/ThemeContext'
+import { useAuth } from '../contexts/AuthProvider'
 
 export default function Navbar() {
   const { isDark, toggleTheme } = useTheme()
+  const { user, logout, isAuthenticated } = useAuth()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logout()
+    navigate('/')
+  }
 
   return (
     <div className="navbar bg-base-100 shadow-md sticky top-0 z-50">
@@ -91,13 +99,46 @@ export default function Navbar() {
             <li>
               <a href="#contact">Contact</a>
             </li>
+            <li><hr /></li>
+            {isAuthenticated ? (
+              <>
+                <li><a>{user?.name || user?.email}</a></li>
+                <li><a onClick={handleLogout}>Logout</a></li>
+              </>
+            ) : (
+              <>
+                <li><Link to="/login">Login</Link></li>
+                <li><Link to="/register">Sign Up</Link></li>
+              </>
+            )}
           </ul>
         </div>
 
         {/* Auth Buttons */}
         <div className="gap-2 hidden sm:flex">
-          <button className="btn btn-ghost btn-sm">Login</button>
-          <button className="btn btn-primary btn-sm">Sign Up</button>
+          {isAuthenticated ? (
+            <>
+              <div className="dropdown dropdown-end">
+                <button className="btn btn-ghost btn-sm mr-2">
+                  <span className="truncate max-w-[100px]">{user?.name || user?.email}</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                  <li><a>{user?.name}</a></li>
+                  <li><a>{user?.email}</a></li>
+                  <li><hr /></li>
+                  <li><a onClick={handleLogout}>Logout</a></li>
+                </ul>
+              </div>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="btn btn-ghost btn-sm">Login</Link>
+              <Link to="/register" className="btn btn-primary btn-sm">Sign Up</Link>
+            </>
+          )}
         </div>
       </div>
     </div>

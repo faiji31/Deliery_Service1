@@ -5,132 +5,165 @@ const slides = [
     id: 1,
     title: 'Fast Parcel Delivery',
     subtitle: 'Get your parcels delivered within hours',
-    image: '🚀',
-    color: 'from-blue-600 to-cyan-600',
-    description: 'Experience lightning-fast delivery service across 64 districts'
+    emoji: '🚀',
+    gradient: 'from-blue-600 via-blue-500 to-cyan-500',
+    image: 'https://images.unsplash.com/photo-1586528116477-09c5441bda33?w=1200&h=500&fit=crop',
   },
   {
     id: 2,
     title: 'Real-time Tracking',
-    subtitle: 'Know where your parcel is at every moment',
-    image: '📍',
-    color: 'from-purple-600 to-pink-600',
-    description: 'Live GPS tracking with instant notifications'
+    subtitle: 'Track your parcel with GPS precision',
+    emoji: '📍',
+    gradient: 'from-purple-600 via-purple-500 to-pink-500',
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f70424dde?w=1200&h=500&fit=crop',
   },
   {
     id: 3,
-    title: 'Affordable Rates',
-    subtitle: 'Best prices in the market',
-    image: '💰',
-    color: 'from-green-600 to-emerald-600',
-    description: 'Transparent pricing with zero hidden charges'
+    title: 'Safe & Insured',
+    subtitle: '100% insurance coverage on all deliveries',
+    emoji: '🛡️',
+    gradient: 'from-emerald-600 via-green-500 to-teal-500',
+    image: 'https://images.unsplash.com/photo-1454165804600-c6e6b4a63669?w=1200&h=500&fit=crop',
   },
   {
     id: 4,
-    title: 'Insured Delivery',
-    subtitle: 'Your parcels are safe with us',
-    image: '🛡️',
-    color: 'from-orange-600 to-red-600',
-    description: 'Full insurance coverage on all deliveries'
-  }
+    title: 'Best Rates',
+    subtitle: 'Affordable pricing with zero hidden charges',
+    emoji: '💰',
+    gradient: 'from-orange-600 via-red-500 to-pink-500',
+    image: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=1200&h=500&fit=crop',
+  },
 ]
 
 export default function Carousel() {
   const [current, setCurrent] = useState(0)
-  const [autoPlay, setAutoPlay] = useState(true)
+  const [isAutoplay, setIsAutoplay] = useState(true)
 
   useEffect(() => {
-    if (!autoPlay) return
+    if (!isAutoplay) return
 
-    const timer = setInterval(() => {
-      setCurrent(prev => (prev + 1) % slides.length)
-    }, 4000)
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length)
+    }, 5000)
 
-    return () => clearInterval(timer)
-  }, [autoPlay])
-
-  const goToSlide = (index) => {
-    setCurrent(index)
-    setAutoPlay(false)
-  }
+    return () => clearInterval(interval)
+  }, [isAutoplay])
 
   const nextSlide = () => {
-    setCurrent(prev => (prev + 1) % slides.length)
-    setAutoPlay(false)
+    setCurrent((prev) => (prev + 1) % slides.length)
+    setIsAutoplay(false)
+    setTimeout(() => setIsAutoplay(true), 8000)
   }
 
   const prevSlide = () => {
-    setCurrent(prev => (prev - 1 + slides.length) % slides.length)
-    setAutoPlay(false)
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length)
+    setIsAutoplay(false)
+    setTimeout(() => setIsAutoplay(true), 8000)
+  }
+
+  const goToSlide = (index) => {
+    setCurrent(index)
+    setIsAutoplay(false)
+    setTimeout(() => setIsAutoplay(true), 8000)
   }
 
   const slide = slides[current]
 
   return (
     <div
-      className="relative w-full h-96 md:h-screen overflow-hidden rounded-lg"
-      onMouseEnter={() => setAutoPlay(false)}
-      onMouseLeave={() => setAutoPlay(true)}
+      className="relative w-full h-80 md:h-[500px] rounded-3xl overflow-hidden shadow-2xl group"
+      onMouseEnter={() => setIsAutoplay(false)}
+      onMouseLeave={() => setIsAutoplay(true)}
     >
-      {/* Slides */}
-      {slides.map((s, index) => (
-        <div
-          key={s.id}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === current ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <div className={`w-full h-full bg-gradient-to-r ${s.color} flex items-center justify-center px-4`}>
-            <div className="text-center text-white animate-fade-in">
-              <div className="text-7xl md:text-9xl mb-6 animate-bounce">{s.image}</div>
-              <h2 className="text-3xl md:text-6xl font-bold mb-4 animate-slide-up">{s.title}</h2>
-              <p className="text-lg md:text-2xl mb-4 opacity-90 animate-slide-up-delay">{s.subtitle}</p>
-              <p className="text-sm md:text-lg opacity-80 max-w-2xl mx-auto animate-slide-up-delay-2">
-                {s.description}
-              </p>
-            </div>
-          </div>
-        </div>
-      ))}
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 transition-all duration-1000 ease-in-out"
+        style={{
+          backgroundImage: `url('${slide.image}')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* Overlay Gradient */}
+        <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient} opacity-65 transition-opacity duration-1000`}></div>
+      </div>
 
-      {/* Left Arrow */}
+      {/* Content Container */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-10 px-6 text-center">
+        {/* Emoji with Enhanced Animation */}
+        <div
+          className="text-6xl md:text-8xl mb-6 animate-bounce"
+          style={{ animationDuration: '2s', animation: 'bounce 2s infinite' }}
+        >
+          {slide.emoji}
+        </div>
+
+        {/* Title */}
+        <h2 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg animate-slide-up">
+          {slide.title}
+        </h2>
+
+        {/* Subtitle */}
+        <p className="text-lg md:text-2xl opacity-95 drop-shadow-md mb-8 max-w-2xl animate-slide-up-delay">
+          {slide.subtitle}
+        </p>
+
+        {/* CTA Button */}
+        <button className="btn btn-lg btn-white text-primary font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-slide-up-delay-2">
+          Send Parcel 📦
+        </button>
+      </div>
+
+      {/* Navigation Arrows - Hidden on mobile, visible on hover on desktop */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/30 hover:bg-white/60 text-white p-2 rounded-full transition-all duration-300 md:p-3 animate-pulse"
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 btn btn-circle btn-ghost btn-lg text-white opacity-0 md:opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm hover:bg-white/30 shadow-lg"
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
+        ❮
       </button>
 
-      {/* Right Arrow */}
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/30 hover:bg-white/60 text-white p-2 rounded-full transition-all duration-300 md:p-3 animate-pulse"
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 btn btn-circle btn-ghost btn-lg text-white opacity-0 md:opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm hover:bg-white/30 shadow-lg"
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
+        ❯
       </button>
 
-      {/* Dots */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-3">
+      {/* Slide Indicators - Clickable Dots */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-3">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`transition-all duration-300 rounded-full ${
+            className={`h-3 rounded-full transition-all duration-300 backdrop-blur-sm ${
               index === current
-                ? 'bg-white w-8 h-3'
-                : 'bg-white/50 hover:bg-white/75 w-3 h-3'
+                ? 'w-8 bg-white shadow-lg scale-100'
+                : 'w-3 bg-white/50 hover:bg-white/75 hover:scale-110'
             }`}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
 
       {/* Slide Counter */}
-      <div className="absolute top-6 right-6 bg-black/40 text-white px-4 py-2 rounded-full text-sm font-semibold backdrop-blur">
+      <div className="absolute top-6 right-6 z-20 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full text-white font-semibold shadow-lg">
         {current + 1} / {slides.length}
+      </div>
+
+      {/* Mobile Navigation Buttons */}
+      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-4 md:hidden">
+        <button
+          onClick={prevSlide}
+          className="btn btn-sm btn-circle btn-white text-primary font-bold"
+        >
+          ❮
+        </button>
+        <button
+          onClick={nextSlide}
+          className="btn btn-sm btn-circle btn-white text-primary font-bold"
+        >
+          ❯
+        </button>
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthProvider';
+import { COMPANY } from '../constants/branding';
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -79,7 +80,10 @@ export default function Register() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-8">
-            <h1 className="text-3xl font-bold text-white">Vibe Delivery</h1>
+            <div className="flex items-center mb-3">
+              <span className="text-4xl">{COMPANY.logo}</span>
+              <h1 className="text-3xl font-bold text-white ml-2">{COMPANY.name}</h1>
+            </div>
             <p className="text-blue-100 mt-2">Create your account</p>
           </div>
 

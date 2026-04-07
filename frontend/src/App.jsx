@@ -3,9 +3,11 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import { AuthProvider } from './contexts/AuthProvider'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import ProtectedRoute from './components/ProtectedRoute'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import ParcelPage from './pages/ParcelPage'
 
 function AppContent() {
   const location = useLocation()
@@ -18,6 +20,14 @@ function AppContent() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route 
+          path="/parcel" 
+          element={
+            <ProtectedRoute requiredRole="customer">
+              <ParcelPage />
+            </ProtectedRoute>
+          } 
+        />
       </Routes>
       {!isAuthPage && <Footer />}
     </>

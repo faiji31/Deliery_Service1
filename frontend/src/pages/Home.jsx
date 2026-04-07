@@ -1,12 +1,44 @@
+import { Link } from 'react-router-dom'
 import Carousel from '../components/Carousel'
 import ComparisonSection from '../components/ComparisonSection'
 import TestimonialSection from '../components/TestimonialSection'
+import { useAuth } from '../contexts/AuthProvider'
+import { COMPANY } from '../constants/branding'
 
 export default function Home() {
+  const { isAuthenticated, user } = useAuth()
+
   return (
     <div className="w-full">
+      {/* Hero Section with Company Branding */}
+      <section className="bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-12 text-white">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="flex items-center justify-center mb-4">
+            <span className="text-6xl">{COMPANY.logo}</span>
+          </div>
+          <h1 className="text-5xl font-bold mb-2">{COMPANY.name}</h1>
+          <p className="text-xl text-blue-100 mb-6">{COMPANY.tagline}</p>
+          
+          {/* CTA Button for Booking */}
+          {isAuthenticated && user?.userType === 'customer' ? (
+            <Link 
+              to="/parcel" 
+              className="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-lg text-lg transition-all transform hover:scale-105 shadow-lg"
+            >
+              📦 Book Your Parcel Now
+            </Link>
+          ) : (
+            <Link 
+              to="/register" 
+              className="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-lg text-lg transition-all transform hover:scale-105 shadow-lg"
+            >
+              Get Started - Register as Customer
+            </Link>
+          )}
+        </div>
+      </section>
       {/* Hero Carousel Section */}
-      <section className="px-4 lg:px-0 py-4 pt-0">
+      <section className="px-4 lg:px-0 py-12 pt-0 bg-white dark:bg-gray-800">
         <div className="max-w-7xl mx-auto">
           <Carousel />
         </div>

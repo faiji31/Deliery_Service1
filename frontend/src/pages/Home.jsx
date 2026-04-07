@@ -1,270 +1,200 @@
+import Carousel from '../components/Carousel'
+import ComparisonSection from '../components/ComparisonSection'
+import TestimonialSection from '../components/TestimonialSection'
+
 export default function Home() {
   return (
     <div className="w-full">
-      {/* Hero Section */}
-      <section className="py-20 px-4 lg:px-0">
+      {/* Hero Carousel Section */}
+      <section className="px-4 lg:px-0 py-4 pt-0">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h1 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4">
-              Hello Deliery Parcel
-            </h1>
-            <p className="text-xl md:text-2xl text-base-content/80 mb-8">
-              Fast, Reliable & Affordable Parcel Delivery Service
-            </p>
-            <p className="text-base md:text-lg text-base-content/60 max-w-2xl mx-auto">
-              Send your parcels with confidence. Track in real-time and get guaranteed delivery at your doorstep.
-            </p>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <button className="btn btn-primary btn-lg text-white font-bold">
-              📦 Send a Parcel
-            </button>
-            <button className="btn btn-outline btn-lg font-bold">
-              🔍 Track Order
-            </button>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div className="card bg-base-100 shadow">
-              <div className="card-body">
-                <p className="text-3xl font-bold text-primary">50K+</p>
-                <p className="text-sm">Deliveries</p>
-              </div>
-            </div>
-            <div className="card bg-base-100 shadow">
-              <div className="card-body">
-                <p className="text-3xl font-bold text-primary">24/7</p>
-                <p className="text-sm">Support</p>
-              </div>
-            </div>
-            <div className="card bg-base-100 shadow">
-              <div className="card-body">
-                <p className="text-3xl font-bold text-primary">64+</p>
-                <p className="text-sm">Districts</p>
-              </div>
-            </div>
-            <div className="card bg-base-100 shadow">
-              <div className="card-body">
-                <p className="text-3xl font-bold text-primary">4.8/5</p>
-                <p className="text-sm">Rating</p>
-              </div>
-            </div>
-          </div>
+          <Carousel />
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-20 px-4 lg:px-0 bg-base-200">
+      {/* Key Features / Highlights Section */}
+      <section className="py-20 px-4 lg:px-0 bg-base-100">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Why Choose Us?</h2>
-            <p className="text-lg text-base-content/70">
-              Everything you need for seamless parcel delivery
+          {/* Section Header */}
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Key Strengths</span>
+            </h2>
+            <p className="text-lg text-base-content/70 max-w-2xl mx-auto">
+              Everything you need to know about what makes us the best delivery service
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Feature Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+
             {/* Feature 1 */}
-            <div className="card bg-base-100 shadow-lg hover:shadow-xl transition">
+            <div className="card bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-fade-in">
               <div className="card-body">
-                <div className="text-5xl mb-4">📦</div>
-                <h3 className="card-title text-xl">Quick Pickup</h3>
+                <div className="text-5xl mb-4 animate-float">⚡</div>
+                <h3 className="card-title text-2xl">Lightning Fast</h3>
                 <p className="text-base-content/70">
-                  We pick up your parcels from anywhere in the city within 2 hours of booking.
+                  Guaranteed 2-4 hour delivery in most areas. Same-day delivery available!
                 </p>
                 <div className="card-actions justify-end mt-4">
-                  <button className="btn btn-sm btn-ghost">Learn more →</button>
+                  <span className="badge badge-primary">2-4 Hours</span>
                 </div>
               </div>
             </div>
 
             {/* Feature 2 */}
-            <div className="card bg-base-100 shadow-lg hover:shadow-xl transition">
+            <div className="card bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-fade-in" style={{ animationDelay: '0.1s' }}>
               <div className="card-body">
-                <div className="text-5xl mb-4">🚚</div>
-                <h3 className="card-title text-xl">Real-time Tracking</h3>
+                <div className="text-5xl mb-4 animate-float" style={{ animationDelay: '0.2s' }}>📍</div>
+                <h3 className="card-title text-2xl">GPS Tracking</h3>
                 <p className="text-base-content/70">
-                  Track your parcel in real-time with GPS location updates and delivery notifications.
+                  Real-time GPS tracking with live notifications at every step.
                 </p>
                 <div className="card-actions justify-end mt-4">
-                  <button className="btn btn-sm btn-ghost">Learn more →</button>
+                  <span className="badge badge-secondary">Real-time</span>
                 </div>
               </div>
             </div>
 
             {/* Feature 3 */}
-            <div className="card bg-base-100 shadow-lg hover:shadow-xl transition">
+            <div className="card bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <div className="card-body">
-                <div className="text-5xl mb-4">💰</div>
-                <h3 className="card-title text-xl">Best Rates</h3>
+                <div className="text-5xl mb-4 animate-float" style={{ animationDelay: '0.4s' }}>💰</div>
+                <h3 className="card-title text-2xl">Best Rates</h3>
                 <p className="text-base-content/70">
-                  Competitive pricing with no hidden charges. Get the best rates in the market.
+                  Affordable pricing with zero hidden charges. Pay only for what you use.
                 </p>
                 <div className="card-actions justify-end mt-4">
-                  <button className="btn btn-sm btn-ghost">Learn more →</button>
+                  <span className="badge badge-success">60৳ - 150৳</span>
                 </div>
               </div>
             </div>
 
             {/* Feature 4 */}
-            <div className="card bg-base-100 shadow-lg hover:shadow-xl transition">
+            <div className="card bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-fade-in" style={{ animationDelay: '0.3s' }}>
               <div className="card-body">
-                <div className="text-5xl mb-4">🛡️</div>
-                <h3 className="card-title text-xl">Insurance Coverage</h3>
+                <div className="text-5xl mb-4 animate-float" style={{ animationDelay: '0.6s' }}>🛡️</div>
+                <h3 className="card-title text-2xl">Full Insurance</h3>
                 <p className="text-base-content/70">
-                  All parcels are insured. Claim your money back if anything goes wrong.
+                  100% insurance coverage on all parcels. Your peace of mind guaranteed.
                 </p>
                 <div className="card-actions justify-end mt-4">
-                  <button className="btn btn-sm btn-ghost">Learn more →</button>
+                  <span className="badge badge-error">100% Safe</span>
                 </div>
               </div>
             </div>
 
             {/* Feature 5 */}
-            <div className="card bg-base-100 shadow-lg hover:shadow-xl transition">
+            <div className="card bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-fade-in" style={{ animationDelay: '0.4s' }}>
               <div className="card-body">
-                <div className="text-5xl mb-4">⏱️</div>
-                <h3 className="card-title text-xl">Fast Delivery</h3>
+                <div className="text-5xl mb-4 animate-float" style={{ animationDelay: '0.8s' }}>🌍</div>
+                <h3 className="card-title text-2xl">Wide Coverage</h3>
                 <p className="text-base-content/70">
-                  Same-day delivery available for most areas. Get your parcel delivered in hours.
+                  Available across 64+ districts. We deliver almost everywhere!
                 </p>
                 <div className="card-actions justify-end mt-4">
-                  <button className="btn btn-sm btn-ghost">Learn more →</button>
+                  <span className="badge badge-warning">64+ Areas</span>
                 </div>
               </div>
             </div>
 
             {/* Feature 6 */}
-            <div className="card bg-base-100 shadow-lg hover:shadow-xl transition">
+            <div className="card bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-indigo-800/10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-fade-in" style={{ animationDelay: '0.5s' }}>
               <div className="card-body">
-                <div className="text-5xl mb-4">✨</div>
-                <h3 className="card-title text-xl">Easy Booking</h3>
+                <div className="text-5xl mb-4 animate-float" style={{ animationDelay: '1s' }}>💬</div>
+                <h3 className="card-title text-2xl">24/7 Support</h3>
                 <p className="text-base-content/70">
-                  Simple and intuitive booking process. Schedule pickups in just a few clicks.
+                  Dedicated customer support available round the clock for your queries.
                 </p>
                 <div className="card-actions justify-end mt-4">
-                  <button className="btn btn-sm btn-ghost">Learn more →</button>
+                  <span className="badge badge-info">Always Online</span>
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* CTA Button */}
+          <div className="text-center animate-slide-up">
+            <button className="btn btn-primary btn-lg gap-2 hover:gap-3 transition-all duration-300">
+              Start Shipping Now 🚀
+            </button>
           </div>
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section id="how-it-works" className="py-20 px-4 lg:px-0">
+      {/* Comparison Section */}
+      <ComparisonSection />
+
+      {/* Testimonial Section */}
+      <TestimonialSection />
+
+      {/* Additional Value Propositions */}
+      <section className="py-20 px-4 lg:px-0 bg-base-100">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">How It Works</h2>
-            <p className="text-lg text-base-content/70">
-              Three simple steps to send your parcel
-            </p>
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">DeliveryParcel</span>?
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Step 1 */}
-            <div className="text-center">
-              <div className="flex justify-center mb-6">
-                <div className="badge badge-lg badge-primary text-white text-xl font-bold w-16 h-16 flex items-center justify-center">
-                  1
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Unique Value 1 */}
+            <div className="flex gap-4 animate-slide-in-left">
+              <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white text-2xl">
+                  ✓
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3">Book Pickup</h3>
-              <p className="text-base-content/70">
-                Enter your pickup location, recipient address, and parcel details. Choose your preferred time.
-              </p>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2">Experienced Team</h3>
+                <p className="text-base-content/70">
+                  With over 5 years of experience in the delivery industry, our team knows exactly how to handle your parcels safely and efficiently.
+                </p>
+              </div>
             </div>
 
-            {/* Step 2 */}
-            <div className="text-center">
-              <div className="flex justify-center mb-6">
-                <div className="badge badge-lg badge-primary text-white text-xl font-bold w-16 h-16 flex items-center justify-center">
-                  2
+            {/* Unique Value 2 */}
+            <div className="flex gap-4 animate-slide-in-right">
+              <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-secondary text-white text-2xl">
+                  ✓
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3">We Pick It Up</h3>
-              <p className="text-base-content/70">
-                Our rider arrives at your location and securely picks up your parcel. Get instant confirmation.
-              </p>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2">Technology-Driven</h3>
+                <p className="text-base-content/70">
+                  We use the latest technology to provide real-time tracking, automated updates, and seamless integration with your business systems.
+                </p>
+              </div>
             </div>
 
-            {/* Step 3 */}
-            <div className="text-center">
-              <div className="flex justify-center mb-6">
-                <div className="badge badge-lg badge-primary text-white text-xl font-bold w-16 h-16 flex items-center justify-center">
-                  3
+            {/* Unique Value 3 */}
+            <div className="flex gap-4 animate-slide-in-left" style={{ animationDelay: '0.1s' }}>
+              <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-success text-white text-2xl">
+                  ✓
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3">Delivered!</h3>
-              <p className="text-base-content/70">
-                Track your parcel in real-time and receive it at the destination. Get delivery confirmation.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="py-20 px-4 lg:px-0 bg-base-200">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Simple Pricing</h2>
-            <p className="text-lg text-base-content/70">
-              No hidden charges. What you see is what you pay.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Price Card 1 */}
-            <div className="card bg-base-100 shadow-lg">
-              <div className="card-body">
-                <h3 className="card-title text-2xl">Documents</h3>
-                <p className="text-4xl font-bold text-primary">60 ৳</p>
-                <p className="text-sm text-base-content/70">Same city delivery</p>
-                <ul className="list-disc list-inside space-y-2 text-sm my-4">
-                  <li>Up to 500g</li>
-                  <li>Same-day delivery</li>
-                  <li>Insurance included</li>
-                </ul>
-                <button className="btn btn-outline w-full">Choose Plan</button>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2">Eco-Friendly</h3>
+                <p className="text-base-content/70">
+                  We're committed to reducing carbon footprint through optimized routes and eco-friendly packaging solutions.
+                </p>
               </div>
             </div>
 
-            {/* Price Card 2 - Popular */}
-            <div className="card bg-primary text-primary-content shadow-lg md:scale-105">
-              <div className="card-body">
-                <div className="badge badge-success">POPULAR</div>
-                <h3 className="card-title text-2xl">Small Parcel</h3>
-                <p className="text-4xl font-bold">110 ৳</p>
-                <p className="text-sm opacity-90">Same city delivery</p>
-                <ul className="list-disc list-inside space-y-2 text-sm my-4">
-                  <li>Up to 2kg</li>
-                  <li>Same-day delivery</li>
-                  <li>Insurance included</li>
-                  <li>Free tracking</li>
-                </ul>
-                <button className="btn bg-white text-primary w-full hover:bg-gray-100">
-                  Choose Plan
-                </button>
+            {/* Unique Value 4 */}
+            <div className="flex gap-4 animate-slide-in-right" style={{ animationDelay: '0.1s' }}>
+              <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-warning text-white text-2xl">
+                  ✓
+                </div>
               </div>
-            </div>
-
-            {/* Price Card 3 */}
-            <div className="card bg-base-100 shadow-lg">
-              <div className="card-body">
-                <h3 className="card-title text-2xl">Large Parcel</h3>
-                <p className="text-4xl font-bold text-primary">150 ৳</p>
-                <p className="text-sm text-base-content/70">Same city delivery</p>
-                <ul className="list-disc list-inside space-y-2 text-sm my-4">
-                  <li>Up to 10kg</li>
-                  <li>Same-day delivery</li>
-                  <li>Insurance included</li>
-                  <li>Priority handling</li>
-                </ul>
-                <button className="btn btn-outline w-full">Choose Plan</button>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2">Scalable Solutions</h3>
+                <p className="text-base-content/70">
+                  Growing business? Our scalable solutions can handle everything from single parcels to thousands of daily shipments.
+                </p>
               </div>
             </div>
           </div>
@@ -272,18 +202,22 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 lg:px-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 lg:px-0 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Send Your Parcel?</h2>
-          <p className="text-xl mb-8 opacity-90">
-            Join thousands of satisfied customers. Fast, reliable, and affordable delivery.
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 animate-slide-up">
+            Join Thousands of Happy Customers
+          </h2>
+          <p className="text-xl mb-8 opacity-90 animate-slide-up-delay">
+            Experience fast, reliable, and affordable parcel delivery today.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="btn btn-lg btn-white text-primary font-bold">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up-delay-2">
+            <button className="btn btn-lg btn-ghost text-white hover:btn-white hover:text-primary font-bold">
               Send Parcel Now
             </button>
-            <button className="btn btn-lg btn-outline btn-white text-white border-white hover:bg-white/20">
-              Learn More
+            <button className="btn btn-lg btn-outline text-white hover:bg-white/20 border-white">
+              Schedule Pickup
             </button>
           </div>
         </div>
